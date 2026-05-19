@@ -1,0 +1,14 @@
+# Uploaded files
+uploads/
+*.pdf
+*.doc
+*.docx
+
+# Test files
+test.php
+test.html
+test_db.php
+test_reg.php
+
+# Config
+config.local.php
