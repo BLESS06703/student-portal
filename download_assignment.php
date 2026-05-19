@@ -6,7 +6,7 @@ $assignmentId = intval($_GET['id'] ?? 0);
 if (!$assignmentId) exit('No assignment ID.');
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
     
     // Get student's course
     $stmt = $pdo->prepare('SELECT course_id FROM students WHERE id = :id');

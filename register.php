@@ -4,7 +4,7 @@ $error = '';
 $success = '';
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
     $courses = $pdo->query('SELECT id, name, code FROM courses ORDER BY name')->fetchAll();
 } catch (PDOException $e) {
     $error = 'System error.';

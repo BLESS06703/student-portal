@@ -9,7 +9,7 @@ $message = '';
 $error = '';
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
     
     // Get all courses for edit modal
     $allCourses = $pdo->query('SELECT id, name, code FROM courses ORDER BY name')->fetchAll();

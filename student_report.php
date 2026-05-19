@@ -7,7 +7,7 @@ $error = '';
 $reportData = null;
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
     
     $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);
