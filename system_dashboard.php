@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['user_id'])) { header('Location: index.php'); exit; }
 
 try {
-    $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
     
     $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);

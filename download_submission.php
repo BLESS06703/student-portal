@@ -6,7 +6,7 @@ $submission_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if (!$submission_id) exit('Invalid.');
 
 try {
-    $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
     
     // Check user is teacher or admin
     $stmt = $pdo->prepare('SELECT role FROM students WHERE id = :id');

@@ -10,7 +10,7 @@ if (isset($_GET['token']) && isset($_GET['id'])) {
     $tokenHash = 'reset_' . hash('sha256', $token);
     
     try {
-        $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+        $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
         $stmt = $pdo->prepare('SELECT id FROM user_tokens WHERE user_id = :uid AND token_hash = :th AND expires_at > NOW()');
         $stmt->execute(['uid' => $userId, 'th' => $tokenHash]);
         if ($stmt->fetch()) { $validToken = true; }
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $validToken) {
     elseif ($password !== $confirm) { $error = 'Passwords do not match.'; }
     else {
         try {
-            $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+            $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
             $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
             $pdo->prepare('UPDATE students SET password_hash = :h WHERE id = :id')->execute(['h' => $hash, 'id' => $userId]);
             $pdo->prepare('DELETE FROM user_tokens WHERE user_id = :uid AND token_hash = :th')->execute(['uid' => $userId, 'th' => $tokenHash]);

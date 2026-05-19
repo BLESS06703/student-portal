@@ -6,7 +6,7 @@ $assignmentId = intval($_GET['id'] ?? 0);
 if (!$assignmentId) exit('No assignment ID.');
 
 try {
-    $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
     
     // Get student's course
     $stmt = $pdo->prepare('SELECT course_id FROM students WHERE id = :id');

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user_id"])) { try { $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", "appuser", "AppP@ssw0rd!"); $pdo->prepare("UPDATE students SET last_seen_notes = NOW() WHERE id = :id")->execute(["id" => $_SESSION["user_id"]]); } catch (PDOException $e) {} }
+if (isset($_SESSION["user_id"])) { try { $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", "appuser", "AppP@ssw0rd!"); $pdo->prepare("UPDATE students SET last_seen_notes = NOW() WHERE id = :id")->execute(["id" => $_SESSION["user_id"]]); } catch (PDOException $e) {} }
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit;
@@ -13,7 +13,7 @@ if (isset($_GET['deleted'])) $message = 'Note deleted successfully.';
 $error = '';
 
 try {
-    $pdo = new PDO("mysql:unix_socket=/data/data/com.termux/files/usr/var/run/mysqld.sock;dbname=secure_app;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
+    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'appuser', 'AppP@ssw0rd!');
     
     $stmt = $pdo->prepare('SELECT s.*, c.name AS course_name, c.code AS course_code FROM students s LEFT JOIN courses c ON s.course_id = c.id WHERE s.id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);
