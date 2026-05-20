@@ -6,7 +6,7 @@ $message = '';
 $error = '';
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
+    $pdo = new PDO("mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_NAME') . ";charset=utf8mb4", getenv('DB_USER'), getenv('DB_PASS'));
     
     $stmt = $pdo->prepare('SELECT * FROM students WHERE id = :id');
     $stmt->execute(['id' => $_SESSION['user_id']]);

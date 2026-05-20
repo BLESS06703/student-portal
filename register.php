@@ -4,7 +4,7 @@ $error = '';
 $success = '';
 
 try {
-    $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
+    $pdo = new PDO("mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_NAME') . ";charset=utf8mb4", getenv('DB_USER'), getenv('DB_PASS'));
     $courses = $pdo->query('SELECT id, name, code FROM courses ORDER BY name')->fetchAll();
 } catch (PDOException $e) {
     $error = 'System error.';

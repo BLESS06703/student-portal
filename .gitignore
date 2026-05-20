@@ -12,3 +12,6 @@ test_reg.php
 
 # Config
 config.local.php
+.env
+database.sql
+*.sql

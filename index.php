@@ -5,7 +5,7 @@ $error = '';
 // Remember me auto-login
 if (empty($_SESSION['user_id']) && isset($_COOKIE['remember_token'])) {
     try {
-        $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
+        $pdo = new PDO("mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_NAME') . ";charset=utf8mb4", getenv('DB_USER'), getenv('DB_PASS'));
         $stmt = $pdo->prepare('SELECT s.id, s.full_name, s.student_id FROM students s JOIN user_tokens t ON s.id = t.user_id WHERE t.token_hash = :token AND t.expires_at > NOW()');
         $stmt->execute(['token' => hash('sha256', $_COOKIE['remember_token'])]);
         $user = $stmt->fetch();
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($student_id && $password) {
         try {
-            $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", 'root', 'lpBBXfReELFhpzVsXbKvsUVjAmTJhDCs');
+            $pdo = new PDO("mysql:host=" . getenv('DB_HOST') . ";port=" . getenv('DB_PORT') . ";dbname=" . getenv('DB_NAME') . ";charset=utf8mb4", getenv('DB_USER'), getenv('DB_PASS'));
             $stmt = $pdo->prepare('SELECT id, full_name, student_id, password_hash, status, role FROM students WHERE student_id = :sid OR email = :sid LIMIT 1');
             $stmt->execute(['sid' => $student_id]);
             $user = $stmt->fetch();
