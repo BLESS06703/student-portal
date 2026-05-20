@@ -41,3 +41,4 @@ Current: `TEACH2026` — Change in teacher_register.php line 7
 - notes.php — Course notes
 - assignments.php — Assignment system
 - profile.php — User profile
+
