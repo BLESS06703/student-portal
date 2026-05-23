@@ -1,0 +1,13 @@
+.git
+backups
+*.md
+README.md
+test.php
+test.html
+test_db.php
+test_reg.php
+404.php
+config.php
+deploy.sh
+railway.json
+database_clean.sql
