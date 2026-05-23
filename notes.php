@@ -1,4 +1,6 @@
 <?php
+include 'db_config.php';
+
 session_start();
 if (isset($_SESSION["user_id"])) { try { $pdo = new PDO("mysql:host=yamabiko.proxy.rlwy.net;port=27745;dbname=railway;charset=utf8mb4", "appuser", "AppP@ssw0rd!"); $pdo->prepare("UPDATE students SET last_seen_notes = NOW() WHERE id = :id")->execute(["id" => $_SESSION["user_id"]]); } catch (PDOException $e) {} }
 if (!isset($_SESSION['user_id'])) {
